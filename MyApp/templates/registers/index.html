@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Products List
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title"><a href="/products/create" class="btn btn-primary">Add New Products</a></h3>
+            <div class="box-tools">
+              <div class="input-group" style="width: 300px;">
+                <label>
+                  <form action="/products/search" method="POST">
+                    {% csrf_token %}
+                    <input style="width: 300px;" id="searchvalue" type="text" name="txtSearch" class="form-control input-sm pull-right" placeholder="Search" />
+                  </form>
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Tell</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Photo</th>
+                <th>Created</th>
+                <th>Action</th>
+              </tr>
+
+              {% for col in registers %}
+                <tr>
+                  <td>{{ col.id }}</td>
+                  <td>{{ col.lastName }}{{ ' ' }}{{ col.firstName }}</td>
+                  {% if col.gender == 'm' %}
+                    <td>Male</td>
+                  {% else %}
+                    <td>Female</td>
+                  {% endif %}
+                  <td>{{ col.phoneNumber }}</td>
+                  <td>{{ col.email }}</td>
+                  <td>{{ col.dateOfBirth }}</td>
+                  <td>
+                    <img src="/media/{{ col.img }}" width="50px" alt="" />
+                  </td>
+                  <td>{{ col.createAt }}</td>
+                  <td>
+                    <a href="/registers/show/{{ col.id }}" class="btn btn-success btn-sm">Show</a>
+                    <a href="/registers/edit/{{ col.id }}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="/registers/destroy/{{ col.id }}" class="btn btn-danger btn-sm">Remove</a>
+                  </td>
+                  
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+      </div>
+    </div>
+  </section>
+  <!-- /.content -->
+{% endblock %}

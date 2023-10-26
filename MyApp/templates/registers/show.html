@@ -1,0 +1,162 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Show Category
+{% endblock %}
+
+{% block content %}
+  <section class="content">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <!-- Horizontal Form -->
+
+        {% comment %} <div class="box-body">
+          <div class="form-group">
+            <label for="inputupdateby" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" disabled value="{{ register.lastName }} {{ register.firstName }}" name="txtBarcode" class="form-control" id="inputupdateby" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputname" class="col-sm-2 control-label">Gender</label>
+            <div class="col-sm-10">
+              <input type="text" disabled value="{{ register.gender }}" name="txtProductName" class="form-control" id="inputname" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputcreateby" class="col-sm-2 control-label">Tell</label>
+            <div class="col-sm-10">
+              <input type="text" disabled value="{{ register.phoneNumber }}" name="txtPrice" class="form-control" id="inputcreateby" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputupdateby" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" disabled value="{{ register.email }}" name="txtQuantity" class="form-control" id="inputupdateby" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputupdateby" class="col-sm-2 control-label">DOB</label>
+            <div class="col-sm-10">
+              <input type="date" disabled value="{{ register.dateOfBirth }}" name="txtQuantity" class="form-control" id="inputupdateby" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="img" class="col-sm-2 control-label">Photo</label><br />
+            <img src="/media/{{ register.img }}" width="100px" alt="" id="img" />
+          </div>
+        </div> {% endcomment %}
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-11">
+                <h5 class="card-title"><a class="btn btn-primary" href="/registers/index">Back</a></h5>
+              </div>
+              <div class="col-md-1">
+                <h5 class="card-title"><a class="btn btn-danger" href="/registers/destroy/{{ register.id }}">Delete</a></h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <center>
+              <div class="row">
+                <div class="col">
+                  <h2><b>Student Details</b></h2><br />
+                  <h4><b>Image</b></h4>
+                  <img src="/media/{{ register.img }}" width="100px" alt="Image" />
+                  <br /><br />
+                  <h4><b>Full Name</b></h4>
+                  <div class="h4">{{ register.lastName }}{{ ' ' }}{{ register.firstName }}</div>
+                  <br />
+                  <h4><b>DOB</b></h4>
+                  <div class="h4">{{ register.dateOfBirth }}</div>
+                  <br />
+                  <h4><b>Gender</b></h4>
+
+                  {% if register.gender == '2' %}
+                    <div class="h4">Female</div>
+                  {% else %}
+                    <div class="h4">Male</div>
+                  {% endif %}
+
+                  <br />
+                  <h4><b>Phone Number</b></h4>
+                  <div class="h4">{{ register.phoneNumber }}</div>
+
+                  <br />
+                  <h4><b>Email</b></h4>
+                  <div class="h4">{{ register.email }}</div>
+                  <br />
+                  <h4><b>Address</b></h4>
+                  <div class="h4">{{ register.address }}</div>
+                  <br />
+
+                  {% if register.emergencyContactName %}
+                    <h4><b>Emergency Contact Name</b></h4>
+                    <div class="h4">{{ register.emergencyContactName }}</div>
+                    <br />
+                  {% endif %}
+
+                  {% if register.emergencyPhoneNumber %}
+                    <h4><b>Emergency Phone Number</b></h4>
+                    <div class="h4">{{ register.emergencyPhoneNumber }}</div>
+                    <br />
+                  {% endif %}
+
+                  {% if register.emergencyAddress %}
+                    <h4><b>Emergency Address</b></h4>
+                    <div class="h4">{{ register.emergencyAddress }}</div>
+                    <br />
+                  {% endif %}
+
+                  {% if register.emergencyContactRelationship %}
+                    <h4><b>Emergency Address</b></h4>
+                    <div class="h4">{{ register.emergencyContactRelationship }}</div>
+                    <br />
+                  {% endif %}
+
+                </div>
+                <div class="col">
+                  <h2><b>Academic Details</b></h2><br />
+                  <h4><b>High School Name</b></h4>
+                  <div class="h4">{{ register.hightSchoolName }}</div>
+                  <br />
+                  <h4><b>Graduation Year</b></h4>
+                  <div class="h4">{{ register.gratuationYear }}</div>
+                  <br />
+                  <h4><b>National Exam Grade</b></h4>
+                  <div class="h4">{{ register.grade }}</div>
+                  <br />
+                  <h4><b>National Exam Total Score</b></h4>
+                  <div class="h4">{{ register.totalScore }}</div>
+                  <br />
+                  <h4><b>Examination Date</b></h4>
+                  <div class="h4">{{ register.dateOfExamination }}</div>
+                  <br />
+                  <h4><b>Seat</b></h4>
+                  <div class="h4">{{ register.seat }}</div>
+                  <br />
+                  <h4><b>Exam Center</b></h4>
+                  <div class="h4">{{ register.examCenter }}</div>
+                  <br />
+                  <h4><b>National Examination Certificate</b></h4>
+                  <img src="/media/{{ register.examCertificate }}" width="100px" alt="">
+                  <br />
+                  <h4><b>Associate Degree</b></h4>
+                  <img src="/media/{{ register.associateDegree }}" width="100px" alt="">
+                  <br />
+                  <h4><b>Major Of Preference</b></h4>
+                  <div class="h4">{{ register.majorReference }}</div>
+                  <br />
+                  
+                </div>
+              </div>
+            </center>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </section>
+{% endblock %}

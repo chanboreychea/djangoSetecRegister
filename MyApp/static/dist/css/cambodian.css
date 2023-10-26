@@ -1,0 +1,410 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+/* body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+} */
+
+
+
+:root{
+  --main-radius: 15px;
+  --main-padding: 15px;
+  --main-margin: 15px;
+}
+
+
+.navigation{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: aqua; */
+  width: 90vw;
+  margin: auto;
+  color: black;
+}
+.navigation a{
+  color: black;
+  padding: var(--main-padding);
+  border-radius: var(--main-radius);
+}
+#apply-now:hover{
+  background-color: #EBBB08;
+  color: white;
+  transition: 0.1s;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--main-radius);
+}
+.img-logo{
+  flex: 1;
+}
+.img-logo img{
+  width: 50%;
+}
+.navigation ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+.navigation ul li{
+  list-style-type: none;
+}
+.navigation ul li a{
+  text-decoration: none;
+}
+
+/* Setec Registration Starts here */
+.setec-registation{
+  width: 95vw;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  margin: auto;
+  height: 50vh;
+  overflow: hidden;
+}
+.left-home{
+  flex: 1;
+  padding: 50px;
+  background-color: #1FA367;
+  border-radius: 10px 0px 0px 10px;
+  color: white;
+}
+.left-home h1,.left-home-description{
+  margin-bottom: 50px;
+}
+.right-home{
+  flex: 1;
+  background-size: cover;
+}
+.right-home img{
+  width: 100%;
+  border-radius: 0px 10px 10px 0px;
+}
+.back-btn{
+  background-color: #168A56;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+}
+.form-head{
+  background-color:#1FA367;
+  width: 80vw;
+  height: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  color: white;
+  padding: 15px 15px 0px 15px;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+
+.form-head h2{
+  margin-bottom: 2%;
+}
+.application-type{
+  display: flex;
+  justify-content: space-between;
+  background-color: #168A56;
+  margin-top: 41px;
+  border-radius: 10px 10px 0 0;
+  /* position: absolute;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto; */
+}
+.cambodian{
+  flex: 1;
+  background-color: #EBBB08;
+  padding: 15px 30px;
+  border-radius: 10px 0 0 0;
+  text-align: center;
+}
+.international{
+  flex: 1;
+  text-align: center;
+  padding: 15px 30px;
+}
+.transfer{
+  flex: 1;
+  text-align: center;
+  padding: 15px 30px;
+}
+
+.cambodian a,.international a,.transfer a{
+  color: white;
+  text-decoration: none;
+}
+
+/* form starts here */
+.form-container{
+  background-color: #F9F9F9;
+  height: 100%;
+  width: 80vw;
+  margin: auto;
+  font-family: Helvetica, sans-serif;
+  color: #54684A;
+  padding: 15px;
+}
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.left-input,.right-input{
+  flex: 1;
+  flex-direction: column;
+}
+.form-container h3{
+  display: block;
+}
+.left-input-content{
+  display: flex;
+  align-items: center;
+  justify-content: spacebe;
+}
+.left-input-content-left{
+  flex: 1;
+}
+.left-input-content-right{
+  flex: 1;
+}
+
+/* style for input type */
+input[type=text], select,input[type=tel],input[type=email] {
+  width: 90%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: var(--main-margin);
+}
+input[type=date]{
+  width: 80%;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: var(--main-margin);
+}
+
+/* upload file start here */
+/* upload file 1 */
+.custom-file-input1 {
+  color: transparent;
+}
+.custom-file-input1::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input1::before {
+  content: 'National ID card';
+  color: black;
+  display: inline-block;
+  /* background: -webkit-linear-gradient(top, #168A56, #168A56); */
+  background-color: #168A56;
+  border: 1px solid #168A56;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  /* -webkit-user-select: none; */
+  cursor: pointer;
+  color: white;
+  font-size: 10pt;
+}
+.custom-file-input1:hover::before {
+  border-color: #1FA367;
+}
+.custom-file-input1:active {
+  outline: 0;
+}
+.custom-file-input1:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+
+/* upload file 2 */
+.custom-file-input2 {
+  color: transparent;
+}
+.custom-file-input2::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input2::before {
+  content: 'Birth Certificate';
+  color: black;
+  display: inline-block;
+  background-color: #168A56;
+  border: 1px solid #168A56;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  /* -webkit-user-select: none; */
+  cursor: pointer;
+  color: white;
+  font-size: 10pt;
+}
+.custom-file-input2:hover::before {
+  border-color: #1FA367;
+}
+.custom-file-input2:active {
+  outline: 0;
+}
+.custom-file-input2:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+.input-file-frame{
+  border: 2px solid #168A56;
+  border-radius: 5px;
+  padding: 5px;
+  width: 90%;
+}
+
+
+
+
+
+
+/* Major Reference */
+.majorContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.majorContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.majorContainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.majorContainer input:checked ~ .checkmark {
+  background-color: #1FA367;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.majorContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.majorContainer .checkmark:after {
+ 	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.major-type{
+  /* background-color: #168A56; */
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  border: none;
+}
+.associate,.bachelor,.master{
+  background-color: #bbbbbb;
+  color: white;
+  border: none;
+  padding: 5px 30px;
+  border-radius: var(--main-radius);
+  cursor: pointer;
+}
+.associate{
+  background-color: #1FA367;
+}
+
+input[type=submit]{
+  background-color: #EBBB08;
+  border: none;
+  color: white;
+  padding: 5px var(--main-padding);
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+}
+
+/* .inputProfile{
+  position: relative;
+  width: 50%;
+  height: 100%;
+  vertical-align: top;
+}
+.imgProfile{
+  position: absolute;
+  opacity: 1;
+}
+.inputProfile{
+  position: absolute;
+  visibility: none;
+} */
+
+.inputProfile{
+  position: relative;
+  width: 50%;
+  height: 100%;
+  vertical-align: top;
+}
+.imgProfile{
+  position: absolute;
+  opacity: 1;
+}
+.inputProfile{
+  position: absolute;
+  visibility: none;
+}
+

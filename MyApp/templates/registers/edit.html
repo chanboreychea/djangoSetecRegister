@@ -1,0 +1,245 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Show Category
+{% endblock %}
+
+{% block content %}
+  {% load static %}
+  <section class="content">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <!-- Horizontal Form -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Edit Category</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" action="/registers/update/{{ register.id }}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="box-body">
+              <center>
+                <div class="row">
+                  <div class="left-input">
+                    <label for="fname">First name:</label><br />
+                    <input type="text" id="fname" name="fname" value="{{ register.firstName }}" /><br />
+                    {% for err in form.fname.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+  
+                  <div class="right-input">
+                    <label for="lname">Last name:</label><br />
+                    <input type="text" id="lname" name="lname" value="{{ register.lastName }}" /><br />
+                    {% for err in form.lname.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left-input">
+                    <div class="left-input-content">
+                      <div class="left-input-content-left">
+                        <p>Gender</p>
+                        
+                        {% if register.gender == "m" %}
+                          <input type="radio" id="male" name="gender" value="m" checked />
+                          <label for="male">Male</label>
+                          <input type="radio" id="female" name="gender" value="f" />
+                          <label for="female">Female</label>
+                        {% else %}
+                          <input type="radio" id="male" name="gender" value="m"  />
+                          <label for="male">Male</label>
+                          <input type="radio" id="female" name="gender" value="f" checked/>
+                          <label for="female">Female</label>
+                        {% endif %}
+                          
+                        
+                      </div>
+                      <div class="left-input-content-right">
+                        <label for="birthday">Date of Birth:</label>
+                        <input type="date" min="2022-01-01" max="2024-12-31" id="birthday" name="birthday" value="{{ register.dateOfBirth }}" /><br />
+                        {% for err in form.birthday.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="right-input">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phoneNumber" value="{{ register.phoneNumber }}" /><br />
+                    {% for err in form.phoneNumber.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left-input">
+                    <label for="fname">Email:</label><br />
+                    <input type="email" id="email" name="email" value="{{ register.email }}" /><br />
+                    {% for err in form.email.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                  <div class="right-input">
+                    <label for="lname">Address:</label><br />
+                    <input type="text" id="address" name="address" value="{{ register.address }}" /><br />
+                    {% for err in form.address.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left-input">
+                    <label for="e-contactName">Emergency Contact Name:</label><br />
+                    <input type="text" id="e-contactName" name="eContactName" value="{{ register.emergencyContactName }}" />
+                  </div>
+                  <div class="right-input">
+                    <label for="e-contactPhoneNumber">Emergency Contact Phone Number:</label><br />
+                    <input type="text" id="e-contactPhoneNumber" name="eContactPhoneNumber" value="{{ register.emergencyPhoneNumber }}" /><br />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left-input">
+                    <label for="e-Address">Emergency Address</label><br />
+                    <input type="text" id="e-Address" name="eAddress" value="{{ register.emergencyAddress }}" />
+                  </div>
+                  <div class="right-input">
+                    <div class="custom-select">
+                      <p>Emergency Contact Relationship</p>
+                      <select name="eCRationship">
+                        <option value="parent">Parents</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="sibling">Sibling</option>
+                        <option value="friend">Friend</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <h3>Academic Information</h3>
+                <div class="row">
+                  <div class="left-input">
+                    <label for="fname">High School</label><br />
+                    <input type="text" id="highSchool" name="highSchool" value="{{ register.hightSchoolName }}" placeholder="-- High School Name --" /><br />
+                    {% for err in form.highSchool.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                  <div class="right-input">
+                    <label for="lname">Graduation Year</label><br />
+                    <input type="text" id="gratuationYear" name="graduationYear" value="{{ register.gratuationYear }}" /><br />
+                    {% for err in form.graduationYear.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                </div>
+                <br />
+                <h3>Naional Examination</h3>
+                <div class="row">
+                  <div class="left-input">
+                    <div class="left-input-content">
+                      <div class="left-input-content-left">
+                        <label for="exam-grade">National Exam Grade</label><br />
+                        <input type="text" id="exam-grade" name="examGrade" value="{{ register.grade }}" placeholder="-- Grade --" /><br />
+                        {% for err in form.examGrade.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small>
+                        {% endfor %}
+                      </div>
+                      <div class="left-input-content-right">
+                        <label for="exam-totalScore">National Exam Total Score</label><br />
+                        <input type="text" id="exam-totalScore" name="examTotalScore" value="{{ register.totalScore }}" placeholder="-- Score --" /><br />
+                        {% for err in form.examTotalScore.errors %}
+                          <small class="text-danger ml-2">{{ err }}</small>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="right-input">
+                    <label for="birthday">Year of National Exam</label><br />
+                    <input type="date" id="exam-date" name="examDate" value="{{ register.dateOfExamination }}" /><br />
+                    {% for err in form.examDate.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left-input">
+                    <label for="fname">Seat</label><br />
+                    <input type="text" id="seat" name="seat" placeholder="-- Seat --" value="{{ register.seat }}" /><br />
+                    {% for err in form.seat.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                  <div class="right-input">
+                    <label for="lname">Exam Center</label><br />
+                    <input type="text" id="exam-center" name="examCenter" value="{{ register.examCenter }}" /><br />
+                    {% for err in form.examCenter.errors %}
+                      <small class="text-danger ml-2">{{ err }}</small>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="left-input">
+                    <label for="">National Examination Certificate or Posted Result</label><br />
+                    <input type="file" id="exam-result" name="examResult" value="{{ form.examResult.value }}" class="input-file-frame" /><br />
+                    
+                  </div>
+                  <div class="right-input">
+                    <label for="">Associate Degree if Available</label><br />
+                    <input type="file" id="exam-result" name="associateDegree" class="input-file-frame" /><br />
+                    
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="left-input">
+                    <h3>Major of Preference</h3>
+                    <label class="majorContainer">
+                      Management Information System<input type="radio" value="MIS" checked="checked" name="radio" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="majorContainer">
+                      Visual Communication (Graphic Design)<input type="radio" value="Graphic Design" name="radio" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="majorContainer">
+                      Fashion Design<input type="radio" value="Fashion Design" name="radio" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="majorContainer">
+                      Architecture<input type="radio" value="Architecture" name="radio" />
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="majorContainer">
+                      Interior Design<input type="radio" value="Interior Disign" name="radio" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="right-input">
+                    <label for="">Personal Profile: 4 x 6</label><br />
+  
+                    <label for="image">
+                      <input type="file" name="image" id="image" style="display: none;" />
+                      <img src="{% static 'dist/img/blank-profile-picture-973460_1280.webp' %}" width="25%" />
+                    
+                  </div>
+                </div>
+              </center>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <a href="/registers/index" class="btn btn-default">Cancel</a>
+              <button type="submit" class="btn btn-info pull-right">Update</button>
+            </div>
+            <!-- /.box-footer -->
+          </form>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </section>
+{% endblock %}
