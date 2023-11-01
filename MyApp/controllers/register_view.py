@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 import os
 
 # Create your views here.
-from MyApp.forms import RegisterForm
+from MyApp.forms import RegisterForm, UpdateRegister
 from MyApp.models import Register
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.decorators import login_required
@@ -33,51 +33,53 @@ def edit(request, id):
 
 @require_POST
 def update(request, id):
+    form = UpdateRegister(request.POST, request.FILES)
+    if form.is_valid():
+        register = Register.objects.get(id=id)
+        register.firstName = request.POST["fname"]
+        register.lastName = request.POST["lname"]
+        register.gender = request.POST["gender"]
+        register.dateOfBirth = request.POST["birthday"]
+        register.phoneNumber = request.POST["phoneNumber"]
+        register.email = request.POST["email"]
+        register.address = request.POST["address"]
+
+        register.emergencyContactName = request.POST["eContactName"]
+        register.emergencyPhoneNumber = request.POST["eContactPhoneNumber"]
+        register.emergencyAddress = request.POST["eAddress"]
+        register.emergencyContactRelationship = request.POST["eCRationship"]
+
+        register.hightSchoolName = request.POST["highSchool"]
+        register.gratuationYear = request.POST["graduationYear"]
+        register.grade = request.POST["examGrade"]
+        register.totalScore = request.POST["examTotalScore"]
+        register.dateOfExamination = request.POST["examDate"]
+        register.seat = request.POST["seat"]
+        register.examCenter = request.POST["examCenter"]
+
+        if request.FILES.getlist("image"):
+            if register.img:
+                os.remove(register.img.path)
+            register.img = request.FILES["image"]
+
+        if request.FILES.getlist("examResult"):
+            if register.examCertificate:
+                os.remove(register.examCertificate.path)
+            register.examCertificate = request.FILES["examResult"]
+
+        if request.FILES.getlist("associateDegree"):
+            if register.associateDegree:
+                os.remove(register.associateDegree.path)
+            register.associateDegree = request.FILES["associateDegree"]
+
+        register.majorReference = request.POST["radio"]
+
+        register.save()
+
+        return redirect("/registers/index")
     register = Register.objects.get(id=id)
-    register.firstName = request.POST["fname"]
-    register.lastName = request.POST["lname"]
-    register.gender = request.POST["gender"]
-    register.dateOfBirth = request.POST["birthday"]
-    register.phoneNumber = request.POST["phoneNumber"]
-    register.email = request.POST["email"]
-    register.address = request.POST["address"]
-
-    register.emergencyContactName = request.POST["eContactName"]
-    register.emergencyPhoneNumber = request.POST["eContactPhoneNumber"]
-    register.emergencyAddress = request.POST["eAddress"]
-    register.emergencyContactRelationship = request.POST["eCRationship"]
-
-    register.hightSchoolName = request.POST["highSchool"]
-    register.gratuationYear = request.POST["graduationYear"]
-    register.grade = request.POST["examGrade"]
-    register.totalScore = request.POST["examTotalScore"]
-    register.dateOfExamination = request.POST["examDate"]
-    register.seat = request.POST["seat"]
-    register.examCenter = request.POST["examCenter"]
-
-    if request.FILES.getlist("image"):
-        if register.img:
-            os.remove(register.img.path)
-        register.img = request.FILES["image"]
-    
-
-    if request.FILES.getlist("examResult"):
-        if register.examCertificate:
-            os.remove(register.examCertificate.path)
-        register.img = request.FILES["examResult"]
-    
-
-    if request.FILES.getlist("associateDegree"):
-        if register.associateDegree:
-            os.remove(register.associateDegree.path)
-        register.associateDegree = request.FILES["associateDegree"]
-    
-
-    register.majorReference = request.POST["radio"]
-
-    register.save()
-
-    return redirect("/registers/index")
+    context = {"register": register, "form": form}
+    return render(request, "registers/editE.html", context)
 
 
 @require_GET

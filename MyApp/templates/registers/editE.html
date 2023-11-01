@@ -21,13 +21,15 @@
             {% csrf_token %}
 
             <input type="hidden" name="id" value="{{ register.id }}">
-            
+            {% for err in form.id.errors %}
+              <small class="text-danger ml-2">{{ err }}</small>
+            {% endfor %}
             <div class="box-body">
               <center>
                 <div class="row">
                   <div class="left-input">
                     <label for="fname">First name:</label><br />
-                    <input type="text" id="fname" name="fname" value="{{ register.firstName }}" /><br />
+                    <input type="text" id="fname" name="fname" value="{{ form.fname.value }}" /><br />
                     {% for err in form.fname.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
@@ -35,7 +37,7 @@
   
                   <div class="right-input">
                     <label for="lname">Last name:</label><br />
-                    <input type="text" id="lname" name="lname" value="{{ register.lastName }}" /><br />
+                    <input type="text" id="lname" name="lname" value="{{ form.lname.value }}" /><br />
                     {% for err in form.lname.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
@@ -63,7 +65,7 @@
                       </div>
                       <div class="left-input-content-right">
                         <label for="birthday">Date of Birth:</label>
-                        <input type="date" min="2022-01-01" max="2024-12-31" id="birthday" name="birthday" value="{{ register.dateOfBirth }}" /><br />
+                        <input type="date" min="2022-01-01" max="2024-12-31" id="birthday" name="birthday" value="{{ form.birthday.value }}" /><br />
                         {% for err in form.birthday.errors %}
                           <small class="text-danger ml-2">{{ err }}</small>
                         {% endfor %}
@@ -72,7 +74,7 @@
                   </div>
                   <div class="right-input">
                     <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phoneNumber" value="{{ register.phoneNumber }}" /><br />
+                    <input type="tel" id="phone" name="phoneNumber" value="{{ form.phoneNumber.value }}" /><br />
                     {% for err in form.phoneNumber.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
@@ -81,14 +83,14 @@
                 <div class="row">
                   <div class="left-input">
                     <label for="fname">Email:</label><br />
-                    <input type="email" id="email" name="email" value="{{ register.email }}" /><br />
+                    <input type="email" id="email" name="email" value="{{ form.email.value }}" /><br />
                     {% for err in form.email.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
                   </div>
                   <div class="right-input">
                     <label for="lname">Address:</label><br />
-                    <input type="text" id="address" name="address" value="{{ register.address }}" /><br />
+                    <input type="text" id="address" name="address" value="{{ form.address.value }}" /><br />
                     {% for err in form.address.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
@@ -126,14 +128,14 @@
                 <div class="row">
                   <div class="left-input">
                     <label for="fname">High School</label><br />
-                    <input type="text" id="highSchool" name="highSchool" value="{{ register.hightSchoolName }}" placeholder="-- High School Name --" /><br />
+                    <input type="text" id="highSchool" name="highSchool" value="{{ form.highSchool.value }}" placeholder="-- High School Name --" /><br />
                     {% for err in form.highSchool.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
                   </div>
                   <div class="right-input">
                     <label for="lname">Graduation Year</label><br />
-                    <input type="text" id="gratuationYear" name="graduationYear" value="{{ register.gratuationYear }}" /><br />
+                    <input type="text" id="gratuationYear" name="graduationYear" value="{{ form.graduationYear.value }}" /><br />
                     {% for err in form.graduationYear.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
@@ -146,14 +148,14 @@
                     <div class="left-input-content">
                       <div class="left-input-content-left">
                         <label for="exam-grade">National Exam Grade</label><br />
-                        <input type="text" id="exam-grade" name="examGrade" value="{{ register.grade }}" placeholder="-- Grade --" /><br />
+                        <input type="text" id="exam-grade" name="examGrade" value="{{ form.examGrade.value }}" placeholder="-- Grade --" /><br />
                         {% for err in form.examGrade.errors %}
                           <small class="text-danger ml-2">{{ err }}</small>
                         {% endfor %}
                       </div>
                       <div class="left-input-content-right">
                         <label for="exam-totalScore">National Exam Total Score</label><br />
-                        <input type="text" id="exam-totalScore" name="examTotalScore" value="{{ register.totalScore }}" placeholder="-- Score --" /><br />
+                        <input type="text" id="exam-totalScore" name="examTotalScore" value="{{ form.examTotalScore.value }}" placeholder="-- Score --" /><br />
                         {% for err in form.examTotalScore.errors %}
                           <small class="text-danger ml-2">{{ err }}</small>
                         {% endfor %}
@@ -162,7 +164,7 @@
                   </div>
                   <div class="right-input">
                     <label for="birthday">Year of National Exam</label><br />
-                    <input type="date" id="exam-date" name="examDate" value="{{ register.dateOfExamination }}" /><br />
+                    <input type="date" id="exam-date" name="examDate" value="{{ form.examDate.value }}" /><br />
                     {% for err in form.examDate.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
@@ -171,14 +173,14 @@
                 <div class="row">
                   <div class="left-input">
                     <label for="fname">Seat</label><br />
-                    <input type="text" id="seat" name="seat" placeholder="-- Seat --" value="{{ register.seat }}" /><br />
+                    <input type="text" id="seat" name="seat" placeholder="-- Seat --" value="{{ form.seat.value }}" /><br />
                     {% for err in form.seat.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
                   </div>
                   <div class="right-input">
                     <label for="lname">Exam Center</label><br />
-                    <input type="text" id="exam-center" name="examCenter" value="{{ register.examCenter }}" /><br />
+                    <input type="text" id="exam-center" name="examCenter" value="{{ form.examCenter.value }}" /><br />
                     {% for err in form.examCenter.errors %}
                       <small class="text-danger ml-2">{{ err }}</small>
                     {% endfor %}
