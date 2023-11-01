@@ -10,7 +10,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title"><a href="/users/create" class="btn btn-primary">Add New Products</a></h3>
+            <h3></h3>
             <div class="box-tools">
               <div class="input-group" style="width: 300px;">
                 <label>
@@ -27,21 +27,18 @@
             <table class="table table-hover">
               <tr>
                 <th>No</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 <th>Gender</th>
                 <th>Email</th>
                 <th>Tel</th>
                 <th>DOB</th>
                 <th>Image</th>
                 <th>Create At</th>
-                <th>Action</th>
               </tr>
               {% for col in users %}
                 <tr>
                   <td>{{ col.id }}</td>
-                  <td>{{ col.firstName }}</td>
-                  <td>{{ col.lastName }}</td>
+                  <td>{{ col.firstName }}{{' '}}{{ col.lastName }}</td>
 
                   {% if col.gender == 'm' %}
                     <td>Male</td>
@@ -56,11 +53,6 @@
                     <img src="/media/{{ col.img }}" width="50px" alt="" />
                   </td>
                   <td>{{ col.createAt }}</td>
-                  <td>
-                    <a href="/users/show/{{ col.id }}" class="btn btn-success btn-sm">Show</a>
-                    <a href="/users/edit/{{ col.id }}" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="/users/destroy/{{ col.id }}" class="btn btn-danger btn-sm">Remove</a>
-                  </td>
                 </tr>
               {% endfor %}
             </table>
